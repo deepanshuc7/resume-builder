@@ -1,4 +1,5 @@
 import { PersonalDetailsForm } from "./features/personal-details/PersonalDetailsForm";
+import SummaryForm from "./features/summary/SummaryForm";
 import { ResumePreview } from "./resume/ResumePreview";
 
 function App() {
@@ -7,8 +8,11 @@ function App() {
       <h1>Resume Builder</h1>
 
       <div>
-        <PersonalDetailsForm />
-        
+        <div>
+          <PersonalDetailsForm />
+          <SummaryForm />
+        </div>
+
         <ResumePreview />
       </div>
     </main>

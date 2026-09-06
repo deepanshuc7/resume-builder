@@ -5,6 +5,7 @@ import type { PersonalDetails, Resume } from "../types/resume";
 interface ResumeStore {
   resume: Resume;
   updatePersonalDetails: (details: Partial<PersonalDetails>) => void;
+  updateSummary: (summary: string) => void;
   resetResume: () => void;
 }
 
@@ -22,5 +23,12 @@ export const useResumeStore = create<ResumeStore>((set) => ({
       },
     })),
 
+  updateSummary: (summary) =>
+    set((state) => ({
+      resume: {
+        ...state.resume,
+        summary,
+      },
+    })),
   resetResume: () => set({ resume: structuredClone(initialResume) }),
 }));
