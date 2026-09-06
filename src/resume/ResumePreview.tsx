@@ -7,6 +7,8 @@ export function ResumePreview() {
 
   const summary = useResumeStore((state) => state.resume.summary)
 
+  const experiences = useResumeStore((state) => state.resume.experience)
+
   return (
     <section aria-label="Resume preview">
       <header>
@@ -20,6 +22,31 @@ export function ResumePreview() {
                 <p>{summary}</p>
             </section>
         )}
+
+        {experiences.map((experience) => (
+            <article key={experience.id}>
+                <h3>{experience.position}</h3>
+
+                <p>{experience.company}</p>
+
+                {experience.location && (
+                    <p>{experience.location}</p>
+                )}
+
+                {(experience.startDate || experience.endDate || experience.current) && (
+                    <p>
+                        {experience.startDate}
+
+                        {experience.startDate && ' - '}
+
+                        {experience.current ? 'Present' : experience.endDate}
+                    </p>
+                )}
+                {experience.description && (
+                    <p>{experience.description}</p>
+                )}
+            </article>
+        ))}
 
         <div>
           {personalDetails.email && <span>{personalDetails.email}</span>}

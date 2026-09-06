@@ -29,4 +29,36 @@ describe("resumeStore", () => {
       "Frontend developer with experience building accessible web applications.",
     );
   });
+
+  it("adds a work experience", () => {
+    useResumeStore.getState().addExperience();
+
+    expect(useResumeStore.getState().resume.experience).toHaveLength(1);
+  });
+
+  it("updates a work experience", () => {
+    useResumeStore.getState().addExperience();
+
+    const experience = useResumeStore.getState().resume.experience[0];
+
+    useResumeStore.getState().updateExperience(experience.id, {
+      company: "AppTweak",
+      position: "Software Engineer Intern",
+    });
+
+    const updatedExperience = useResumeStore.getState().resume.experience[0];
+
+    expect(updatedExperience.company).toBe("AppTweak");
+    expect(updatedExperience.position).toBe("Software Engineer Intern");
+  });
+
+  it("removes a work experience", () => {
+    useResumeStore.getState().addExperience();
+
+    const experience = useResumeStore.getState().resume.experience[0];
+
+    useResumeStore.getState().removeExperience(experience.id);
+
+    expect(useResumeStore.getState().resume.experience).toHaveLength(0);
+  });
 });

@@ -1,3 +1,4 @@
+import { ExperienceForm } from "./features/experience/ExperienceForm";
 import { PersonalDetailsForm } from "./features/personal-details/PersonalDetailsForm";
 import SummaryForm from "./features/summary/SummaryForm";
 import { ResumePreview } from "./resume/ResumePreview";
@@ -11,6 +12,7 @@ function App() {
         <div>
           <PersonalDetailsForm />
           <SummaryForm />
+          <ExperienceForm />
         </div>
 
         <ResumePreview />
