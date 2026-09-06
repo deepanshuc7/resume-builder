@@ -40,6 +40,68 @@ export function PersonalDetailsForm() {
           }
         />
       </div>
+
+      <div>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={personalDetails.email}
+          onChange={(event) =>
+            updatePersonalDetails({ email: event.target.value })
+          }
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phone">Phone</label>
+        <input
+          id="phone"
+          type="tel"
+          value={personalDetails.phone}
+          onChange={(event) =>
+            updatePersonalDetails({ phone: event.target.value })
+          }
+        />
+      </div>
+
+      <div>
+        <label htmlFor="location">Location</label>
+
+        <input
+          id="location"
+          type="text"
+          value={personalDetails.location}
+          onChange={(event) =>
+            updatePersonalDetails({ location: event.target.value })
+          }
+        />
+      </div>
+
+      <div>
+        <label htmlFor="website">Website</label>
+
+        <input
+          id="website"
+          type="url"
+          value={personalDetails.website}
+          onChange={(event) =>
+            updatePersonalDetails({ website: event.target.value })
+          }
+        />
+      </div>
+
+      <div>
+        <label htmlFor="linkedin">LinkedIn</label>
+        <input
+          id="linkedin"
+          type="url"
+          value={personalDetails.linkedin}
+          onChange={(event) =>
+            updatePersonalDetails({ linkedin: event.target.value })
+          }
+        />
+      </div>
     </section>
   );
 }
