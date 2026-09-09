@@ -1,6 +1,11 @@
 import { create } from "zustand";
 import { initialResume } from "../data/initialResume";
-import type { Experience, PersonalDetails, Resume } from "../types/resume";
+import type {
+  Education,
+  Experience,
+  PersonalDetails,
+  Resume,
+} from "../types/resume";
 
 interface ResumeStore {
   resume: Resume;
@@ -9,6 +14,9 @@ interface ResumeStore {
   addExperience: () => void;
   updateExperience: (id: string, experience: Partial<Experience>) => void;
   removeExperience: (id: string) => void;
+  addEducation: () => void;
+  updateEducation: (id: string, education: Partial<Education>) => void;
+  removeEducation: (id: string) => void;
   resetResume: () => void;
 }
 
@@ -68,6 +76,42 @@ export const useResumeStore = create<ResumeStore>((set) => ({
       resume: {
         ...state.resume,
         experience: state.resume.experience.filter((item) => item.id !== id),
+      },
+    })),
+
+  addEducation: () =>
+    set((state) => ({
+      resume: {
+        ...state.resume,
+        education: [
+          ...state.resume.education,
+          {
+            id: crypto.randomUUID(),
+            institution: "",
+            degree: "",
+            location: "",
+            startDate: "",
+            endDate: "",
+          },
+        ],
+      },
+    })),
+
+  updateEducation: (id, education) =>
+    set((state) => ({
+      resume: {
+        ...state.resume,
+        education: state.resume.education.map((item) =>
+          item.id === id ? { ...item, ...education } : item,
+        ),
+      },
+    })),
+
+  removeEducation: (id) =>
+    set((state) => ({
+      resume: {
+        ...state.resume,
+        education: state.resume.education.filter((item) => item.id !== id),
       },
     })),
 

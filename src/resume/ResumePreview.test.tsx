@@ -88,4 +88,38 @@ describe("ResumePreview", () => {
       ),
     ).toBeInTheDocument();
   });
+
+  it('displays education', () => {
+  useResumeStore.getState().addEducation()
+
+  const education =
+    useResumeStore.getState().resume.education[0]
+
+  useResumeStore.getState().updateEducation(
+    education.id,
+    {
+      institution: 'Thomas More',
+      degree: 'International Digital Experience Design',
+      location: 'Mechelen',
+      startDate: '2024-09',
+      endDate: '2025-06',
+    },
+  )
+
+  render(<ResumePreview />)
+
+  expect(
+    screen.getByText('Thomas More'),
+  ).toBeInTheDocument()
+
+  expect(
+    screen.getByText(
+      'International Digital Experience Design',
+    ),
+  ).toBeInTheDocument()
+
+  expect(
+    screen.getByText('Mechelen'),
+  ).toBeInTheDocument()
+})
 });

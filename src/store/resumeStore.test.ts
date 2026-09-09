@@ -61,4 +61,38 @@ describe("resumeStore", () => {
 
     expect(useResumeStore.getState().resume.experience).toHaveLength(0);
   });
+
+  it("adds an education entry", () => {
+    useResumeStore.getState().addEducation();
+
+    expect(useResumeStore.getState().resume.education).toHaveLength(1);
+  });
+
+  it("updates an education entry", () => {
+    useResumeStore.getState().addEducation();
+
+    const education = useResumeStore.getState().resume.education[0];
+
+    useResumeStore.getState().updateEducation(education.id, {
+      institution: "Thomas More",
+      degree: "International Digital Experience Design",
+    });
+
+    const updatedEducation = useResumeStore.getState().resume.education[0];
+
+    expect(updatedEducation.institution).toBe("Thomas More");
+    expect(updatedEducation.degree).toBe(
+      "International Digital Experience Design",
+    );
+  });
+
+  it("removes an education entry", () => {
+    useResumeStore.getState().addEducation();
+
+    const education = useResumeStore.getState().resume.education[0];
+
+    useResumeStore.getState().removeEducation(education.id);
+
+    expect(useResumeStore.getState().resume.education).toHaveLength(0);
+  });
 });

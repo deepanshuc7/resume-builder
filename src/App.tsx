@@ -1,7 +1,9 @@
+import { EducationForm } from "./features/education/EducationForm";
 import { ExperienceForm } from "./features/experience/ExperienceForm";
 import { PersonalDetailsForm } from "./features/personal-details/PersonalDetailsForm";
 import SummaryForm from "./features/summary/SummaryForm";
 import { ResumePreview } from "./resume/ResumePreview";
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <PersonalDetailsForm />
           <SummaryForm />
           <ExperienceForm />
+          <EducationForm />
         </div>
 
         <ResumePreview />
